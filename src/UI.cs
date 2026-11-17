@@ -20,7 +20,8 @@ internal sealed class MainForm : Form {
     private int enters;
     internal MainForm(Settings s,bool previewMode=false) {
         settings=s;preview=previewMode;UiText.Language=s.Language;Text="Auto Enter";
-        Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);AutoScaleMode=AutoScaleMode.Dpi;
+        SuspendLayout();Icon=AppIcon.LoadIcon(SystemInformation.IconSize);
+        AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;
         Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
         ClientSize=new Size(640,630);MinimumSize=new Size(620,620);StartPosition=FormStartPosition.CenterScreen;
         var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(24),ColumnCount=1,RowCount=6,BackColor=Theme.Background};
@@ -29,7 +30,7 @@ internal sealed class MainForm : Form {
         var header=new TableLayoutPanel {Dock=DockStyle.Fill,ColumnCount=3,Margin=new Padding(0,0,0,16)};
         header.RowStyles.Add(new RowStyle(SizeType.Percent,100));
         header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,52));header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,74));
-        header.Controls.Add(new PictureBox {Image=Icon.ToBitmap(),SizeMode=PictureBoxSizeMode.Zoom,Size=new Size(40,40),Margin=new Padding(0,5,12,0)},0,0);
+        header.Controls.Add(new AppIcon {Size=new Size(40,40),Margin=new Padding(0,5,12,0)},0,0);
         var titles=new Panel {Dock=DockStyle.Fill};titles.Controls.Add(new Label {Text="Auto Enter",Font=new Font("Segoe UI",21,FontStyle.Bold),AutoSize=true,Location=new Point(0,-2)});
         tagline.AutoSize=true;tagline.ForeColor=Theme.Muted;tagline.Location=new Point(2,34);tagline.Font=new Font(Font.FontFamily,9);titles.Controls.Add(tagline);header.Controls.Add(titles,1,0);
         language.Size=new Size(70,32);language.Margin=new Padding(0,9,0,0);header.Controls.Add(language,2,0);root.Controls.Add(header,0,0);
@@ -57,9 +58,10 @@ internal sealed class MainForm : Form {
         footer.RowStyles.Add(new RowStyle(SizeType.Percent,100));
         status.Dock=DockStyle.Fill;status.ForeColor=Theme.Muted;status.Font=new Font(Font.FontFamily,9);status.AutoEllipsis=true;status.TextAlign=ContentAlignment.MiddleLeft;root.Controls.Add(status,0,5);
         refreshing=true;enabled.Checked=settings.Enabled;always.Checked=settings.Mode=="always";ending.Checked=settings.Mode=="over";endWord.Text=settings.EndWord;refreshing=false;
+        ResumeLayout(true);
         if(!preview) {
             engine=new Engine(settings);engine.TestWindow=Handle;engine.TestFocus=Demo.Handle;engine.Status=message=>status.Text=message;engine.ToggleRequested=()=>enabled.Checked=!enabled.Checked;
-            tray=new NotifyIcon {Icon=Icon,Visible=true};var menu=new ContextMenuStrip();menu.Items.Add(toggleMenu);menu.Items.Add(settingsMenu);menu.Items.Add(new ToolStripSeparator());menu.Items.Add(exitMenu);tray.ContextMenuStrip=menu;tray.DoubleClick+=(o,e)=>Restore();
+            tray=new NotifyIcon {Icon=AppIcon.LoadIcon(SystemInformation.SmallIconSize),Visible=true};var menu=new ContextMenuStrip();menu.Items.Add(toggleMenu);menu.Items.Add(settingsMenu);menu.Items.Add(new ToolStripSeparator());menu.Items.Add(exitMenu);tray.ContextMenuStrip=menu;tray.DoubleClick+=(o,e)=>Restore();
             toggleMenu.Click+=(o,e)=>enabled.Checked=!enabled.Checked;settingsMenu.Click+=(o,e)=>Restore();exitMenu.Click+=(o,e)=>{exiting=true;Close();};
         }
         enabled.CheckedChanged+=(o,e)=>{if(refreshing)return;settings.Enabled=enabled.Checked;if(engine!=null)engine.SetEnabled(enabled.Checked);Save();RefreshText();};
@@ -69,7 +71,7 @@ internal sealed class MainForm : Form {
         options.Click+=(o,e)=>{Cancel();using(var dialog=new OptionsForm(settings,Save))dialog.ShowDialog(this);RefreshText();};
         Demo.KeyDown+=(o,e)=>{if(e.KeyCode==Keys.Enter&&e.Modifiers==Keys.None){enters++;UpdateCount();e.SuppressKeyPress=true;}};
         FormClosing+=(o,e)=>{if(!preview&&!exiting&&e.CloseReason==CloseReason.UserClosing){e.Cancel=true;Hide();}};
-        FormClosed+=(o,e)=>{if(tray!=null){tray.Visible=false;tray.Dispose();}if(engine!=null)engine.Dispose();};
+        FormClosed+=(o,e)=>{if(tray!=null){tray.Visible=false;tray.Icon.Dispose();tray.Dispose();}if(engine!=null)engine.Dispose();Icon.Dispose();};
         RefreshText();
     }
     private void SetMode(string mode) {if(refreshing)return;Cancel();settings.Mode=mode;Save();RefreshText();}
@@ -106,7 +108,7 @@ internal sealed class MainForm : Form {
 }
 internal sealed class OptionsForm : Form {
     internal OptionsForm(Settings settings,Func<bool> save) {
-        Text=UiText.T("Auto Enter · Options","Auto Enter · 更多设置");AutoScaleMode=AutoScaleMode.Dpi;Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
+        SuspendLayout();Text=UiText.T("Auto Enter · Options","Auto Enter · 更多设置");AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
         ClientSize=new Size(490,260);FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=false;MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;ShowInTaskbar=false;
         var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(24),ColumnCount=1,RowCount=6};root.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));Controls.Add(root);
         var all=new CheckBox {AutoSize=true,Text=UiText.T("Enable in every app","在所有应用中生效"),Checked=settings.AllApps};root.Controls.Add(all);
@@ -116,7 +118,7 @@ internal sealed class OptionsForm : Form {
         var delay=new NumericUpDown {Minimum=300,Maximum=3000,Increment=100,Value=settings.DelayMs,Width=100,AccessibleName=UiText.T("Delay in milliseconds","延迟毫秒数")};timing.Controls.Add(delay);timing.Controls.Add(new Label {Text="ms",AutoSize=true,Margin=new Padding(4,5,0,0)});root.Controls.Add(timing);
         root.Controls.Add(new Label {AutoSize=true,ForeColor=Theme.Muted,Font=new Font(Font.FontFamily,9),Text=UiText.T("Clicking, typing or changing focus cancels a pending Enter.","等待期间点击、输入或切换焦点，会取消待执行的回车。"),Margin=new Padding(0,12,0,10)});
         var done=new SoftButton {Text=UiText.T("Done","完成"),Size=new Size(90,34),Anchor=AnchorStyles.Right,DialogResult=DialogResult.OK};root.Controls.Add(done);AcceptButton=done;
-        all.CheckedChanged+=(o,e)=>{settings.AllApps=all.Checked;apps.Enabled=!all.Checked;save();};apps.TextChanged+=(o,e)=>{settings.AllowedApps=apps.Text;save();};delay.ValueChanged+=(o,e)=>{settings.DelayMs=(int)delay.Value;save();};
+        all.CheckedChanged+=(o,e)=>{settings.AllApps=all.Checked;apps.Enabled=!all.Checked;save();};apps.TextChanged+=(o,e)=>{settings.AllowedApps=apps.Text;save();};delay.ValueChanged+=(o,e)=>{settings.DelayMs=(int)delay.Value;save();};ResumeLayout(true);
     }
 }
 }

@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect x="16" y="16" width="480" height="480" rx="112" fill="#007AFF"/>
-  <!-- Enter arrow adapted from Lucide corner-down-left (ISC / Feather MIT). -->
-  <g fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"><path d="M376 132v108a64 64 0 0 1-64 64H136"/><path d="m208 232-72 72 72 72"/></g>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Exported from the editable Figma icon. Arrow adapted from Lucide corner-down-left (ISC / Feather MIT). -->
+<path d="M384 16H128C66.1441 16 16 66.1441 16 128V384C16 445.856 66.1441 496 128 496H384C445.856 496 496 445.856 496 384V128C496 66.1441 445.856 16 384 16Z" fill="#007AFF"/>
+<path d="M376 132V240C376 256.974 369.257 273.252 357.255 285.255C345.252 297.257 328.974 304 312 304H136" stroke="white" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M208 232L136 304L208 376" stroke="white" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

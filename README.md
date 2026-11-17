@@ -20,7 +20,7 @@ Auto Enter is an independent community project. It is not affiliated with Typele
 
 ## Get started
 
-1. Download `Auto-Enter-v1.2.0-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/auto-enter/releases) and extract it into a permanent folder. You can also download the standalone `AutoEnter.exe`.
+1. Download `Auto-Enter-v1.2.1-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/auto-enter/releases) and extract it into a permanent folder. Keep `AutoEnter.exe.config` beside `AutoEnter.exe`; it enables sharp per-monitor DPI rendering.
 2. Start Typeless, then open `AutoEnter.exe`.
 3. Turn on the switch and choose **Every dictation** or **With an ending word**.
 4. Try a dictation in the built-in test box. The **Enter received** counter should increase.
@@ -66,7 +66,7 @@ The project uses C# and Windows Forms with the Windows .NET Framework compiler. 
 ./package.ps1
 ```
 
-The executable is written to `dist/AutoEnter.exe`. Packaging creates a portable ZIP, a standalone executable, and SHA-256 checksums under `release/`.
+The executable and its configuration are written to `dist/`. Packaging creates a portable ZIP, the executable/configuration pair, and SHA-256 checksums under `release/`.
 
 Optional integration test, using **your locally installed** Typeless input component:
 
@@ -96,6 +96,8 @@ Quit an already-running Auto Enter instance before integration testing, and leav
 | `src/Tests.cs` | Rule, migration, language, and isolated integration tests |
 
 ## Credits
+
+The [editable Figma icon](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2) and [SVG export](assets/auto-enter.svg) contain vector paths. The app header draws those paths at its physical display size; the Windows icon includes ten native sizes from 16 to 256 px. The PNG preview is 1024 px.
 
 Inspired by [ConstantineLiu/typeless-autoenter](https://github.com/ConstantineLiu/typeless-autoenter) for macOS. This Windows implementation is independently written; its input-source detection differs because Windows low-level keyboard events do not directly expose the source PID.
 

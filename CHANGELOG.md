@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 — 2026-11-17
+
+- Fix blurry header artwork by drawing vector paths at the actual control size instead of stretching a 32 px shell icon.
+- Enable .NET Framework 4.8 PerMonitorV2 DPI awareness; scale custom controls and layouts with the screen.
+- Include ten native Windows icon sizes and a 1024 px PNG preview, with editable Figma and SVG sources.
+- Bundle `AutoEnter.exe.config`; keep it next to the executable when installing or updating.
+- Input detection, ending-word matching, and Enter behavior are unchanged.
+
 ## 1.2.0 — 2026-11-17
 
 - New light interface with rounded cards, a clear on/off switch, and compact options.

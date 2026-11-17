@@ -16,7 +16,7 @@ internal sealed class Card : Panel {
     internal Card() { DoubleBuffered=true; BackColor=Color.White; Padding=new Padding(18); }
     protected override void OnPaintBackground(PaintEventArgs e) {
         e.Graphics.Clear(Parent==null ? Theme.Background : Parent.BackColor);e.Graphics.SmoothingMode=SmoothingMode.AntiAlias;
-        using(var p=Theme.Round(new RectangleF(0.5f,0.5f,Width-1,Height-1),14))
+        using(var p=Theme.Round(new RectangleF(0.5f,0.5f,Width-1,Height-1),14*DeviceDpi/96f))
         using(var b=new SolidBrush(BackColor)) using(var pen=new Pen(Theme.Line)) {e.Graphics.FillPath(b,p);e.Graphics.DrawPath(pen,p);}
     }
 }
@@ -25,7 +25,7 @@ internal sealed class SoftButton : Button {
     internal SoftButton() { FlatStyle=FlatStyle.Flat;FlatAppearance.BorderSize=0;Cursor=Cursors.Hand;SetStyle(ControlStyles.UserPaint|ControlStyles.OptimizedDoubleBuffer|ControlStyles.AllPaintingInWmPaint,true); }
     protected override void OnPaint(PaintEventArgs e) {
         e.Graphics.Clear(Parent.BackColor);e.Graphics.SmoothingMode=SmoothingMode.AntiAlias;
-        using(var p=Theme.Round(new RectangleF(0.5f,0.5f,Width-1,Height-1),9))
+        using(var p=Theme.Round(new RectangleF(0.5f,0.5f,Width-1,Height-1),9*DeviceDpi/96f))
         using(var b=new SolidBrush(Enabled ? Fill : Theme.Field)) using(var pen=new Pen(Focused ? Theme.Blue : Theme.Line)) {e.Graphics.FillPath(b,p);e.Graphics.DrawPath(pen,p);}
         TextRenderer.DrawText(e.Graphics,Text,Font,ClientRectangle,Enabled ? ForeColor : Theme.Muted,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);
     }
@@ -35,10 +35,10 @@ internal sealed class Toggle : CheckBox {
     protected override void OnCheckedChanged(EventArgs e) { base.OnCheckedChanged(e);Invalidate(); }
     protected override void OnPaint(PaintEventArgs e) {
         e.Graphics.Clear(Parent.BackColor);e.Graphics.SmoothingMode=SmoothingMode.AntiAlias;
-        var rect=new RectangleF(1,2,Width-2,Height-4);
+        float scale=DeviceDpi/96f;var rect=new RectangleF(scale,2*scale,Width-2*scale,Height-4*scale);
         using(var p=Theme.Round(rect,rect.Height/2)) using(var b=new SolidBrush(Checked ? Theme.Blue : Color.FromArgb(196,200,208))) e.Graphics.FillPath(b,p);
-        float d=rect.Height-4,x=Checked?rect.Right-d-2:rect.Left+2;
-        using(var b=new SolidBrush(Color.White))e.Graphics.FillEllipse(b,x,rect.Y+2,d,d);
+        float d=rect.Height-4*scale,x=Checked?rect.Right-d-2*scale:rect.Left+2*scale;
+        using(var b=new SolidBrush(Color.White))e.Graphics.FillEllipse(b,x,rect.Y+2*scale,d,d);
         if(Focused && ShowFocusCues) ControlPaint.DrawFocusRectangle(e.Graphics,ClientRectangle);
     }
 }
@@ -47,7 +47,7 @@ internal sealed class Segment : RadioButton {
     protected override void OnCheckedChanged(EventArgs e) {base.OnCheckedChanged(e);Invalidate();}
     protected override void OnPaint(PaintEventArgs e) {
         e.Graphics.Clear(Parent.BackColor);e.Graphics.SmoothingMode=SmoothingMode.AntiAlias;
-        using(var p=Theme.Round(new RectangleF(1,1,Width-2,Height-2),8))using(var b=new SolidBrush(Checked?Color.FromArgb(232,242,255):Theme.Field))e.Graphics.FillPath(b,p);
+        using(var p=Theme.Round(new RectangleF(1,1,Width-2,Height-2),8*DeviceDpi/96f))using(var b=new SolidBrush(Checked?Color.FromArgb(232,242,255):Theme.Field))e.Graphics.FillPath(b,p);
         TextRenderer.DrawText(e.Graphics,Text,Font,ClientRectangle,Checked?Theme.Blue:Theme.Muted,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);
         if(Focused && ShowFocusCues)ControlPaint.DrawFocusRectangle(e.Graphics,Rectangle.Inflate(ClientRectangle,-4,-4));
     }

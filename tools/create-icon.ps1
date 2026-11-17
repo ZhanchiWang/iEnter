@@ -31,10 +31,10 @@ function Render-Icon([int]$size) {
     $pen.Dispose(); $arrow.Dispose(); $bg.Dispose(); $round.Dispose(); $g.Dispose()
     return $bmp
 }
-$preview = Render-Icon 512
+$preview = Render-Icon 1024
 $preview.Save((Join-Path $assets 'auto-enter.png'),[System.Drawing.Imaging.ImageFormat]::Png)
 $preview.Dispose()
-$sizes = @(16,24,32,48,64,128,256)
+$sizes = @(16,20,24,32,40,48,64,96,128,256)
 $frames = New-Object 'System.Collections.Generic.List[byte[]]'
 foreach ($size in $sizes) {
     $bmp = Render-Icon $size
@@ -55,4 +55,4 @@ for ($i=0; $i -lt $sizes.Count; $i++) {
 }
 foreach ($frame in $frames) { $writer.Write($frame) }
 $writer.Dispose(); $file.Dispose()
-Write-Output 'Created auto-enter.ico (16–256 px) and auto-enter.png (512 px).'
+Write-Output 'Created auto-enter.ico (10 native sizes, 16–256 px) and auto-enter.png (1024 px).'

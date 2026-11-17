@@ -10,7 +10,7 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 ## 使用
 
-1. 从 Releases 下载并解压，双击 `AutoEnter.exe`，不需要安装。源码编译的程序位于 `dist/AutoEnter.exe`。
+1. 从 Releases 下载 ZIP 并解压，双击 `AutoEnter.exe`，不需要安装。请将 `AutoEnter.exe.config` 与程序保存在同一目录，它用于启用高 DPI 清晰显示。源码编译结果位于 `dist/`。
 2. 勾选「开启自动回车」。也可以用 **Ctrl + Shift + Enter** 或托盘菜单切换。
 3. 选择「每次输入后」或「仅有结束词时」；默认等待 **500 ms**。
    结束词模式下，在「结束词」输入框里填入 `over`、`发送`、`done` 或其他词语，修改后自动保存并立即生效。
@@ -49,6 +49,8 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 已验证环境：Windows x64，Typeless **2.11.0.138**。工具识别该版本原生输入组件写入模拟键盘事件的 `dwExtraInfo = 0x54594C45`，并同时检查注入标志和 Ctrl+V。这个标记是兼容性线索，不是安全身份认证，也不是官方插件 API；未来 Typeless 改变输入机制后可能需要更新本工具。「重新粘贴上一条」等同样使用这个标记的 Typeless 功能也会触发。
 
 ## 编译和测试
+
+1.2.1 修复了界面放大小图标和 Windows 高 DPI 模糊的问题。图标保留[可编辑 Figma 原稿](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2)及 [SVG 矢量文件](assets/auto-enter.svg)，界面直接绘制矢量路径，系统图标包含 16–256 px 的十档尺寸。
 
 需要 Windows x64 和 .NET Framework 4.x 编译器。当前机器已经具备；项目没有 NuGet 或网络运行依赖。
 
