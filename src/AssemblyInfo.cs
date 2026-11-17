@@ -4,5 +4,5 @@ using System.Runtime.Versioning;
 [assembly: AssemblyTitle("iEnter")]
 [assembly: AssemblyDescription("Automatic Enter after Typeless input on Windows")]
 [assembly: AssemblyProduct("iEnter")]
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.3.0.0")]
+[assembly: AssemblyVersion("1.3.1.0")]
+[assembly: AssemblyFileVersion("1.3.1.0")]

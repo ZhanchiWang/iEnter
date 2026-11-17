@@ -22,7 +22,7 @@ iEnter is an independent community project. It is not affiliated with Typeless a
 
 Previously named Auto Enter. When upgrading, point existing shortcuts and startup entries to `iEnter.exe`.
 
-1. Download `iEnter-v1.3.0-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/iEnter/releases) and extract it into a permanent folder. Keep `iEnter.exe.config` beside `iEnter.exe`; it enables sharp per-monitor DPI rendering.
+1. Download `iEnter-v1.3.1-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/iEnter/releases) and extract it into a permanent folder. Keep `iEnter.exe.config` beside `iEnter.exe`; it enables sharp per-monitor DPI rendering.
 2. Start Typeless, then open `iEnter.exe`.
 3. Turn on the switch and choose **Every dictation** or **With an ending word**.
 4. Try a dictation in the built-in test box. The **Enter received** counter should increase.
@@ -99,8 +99,8 @@ Quit an already-running iEnter instance before integration testing, and leave th
 
 ## Credits
 
-The [editable Figma icon](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2) and [SVG export](assets/ienter.svg) contain vector paths. The app header draws those paths at its physical display size; the Windows icon includes ten native sizes from 16 to 256 px. The PNG preview is 1024 px.
+The [editable SVG icon](assets/ienter.svg) is an ivory L-shaped keycap with a rounded blue return arrow. `src/IconArtwork.cs` supplies the same vector geometry to the app header and icon exporter. The Windows icon includes ten native sizes from 16 to 256 px, and the PNG preview is 1024 px.
 
 Inspired by [ConstantineLiu/typeless-autoenter](https://github.com/ConstantineLiu/typeless-autoenter) for macOS. This Windows implementation is independently written; its input-source detection differs because Windows low-level keyboard events do not directly expose the source PID.
 
-The icon adapts [Lucide's corner-down-left](https://github.com/lucide-icons/lucide/blob/main/icons/corner-down-left.svg), with a custom background and palette. See [icon licenses](assets/LUCIDE-LICENSE.txt). Source code is licensed under [MIT](LICENSE).
+The return arrow evolved from [Lucide's corner-down-left](https://github.com/lucide-icons/lucide/blob/main/icons/corner-down-left.svg), with a custom keycap, proportions, and palette. See [icon licenses](assets/LUCIDE-LICENSE.txt). Source code is licensed under [MIT](LICENSE).

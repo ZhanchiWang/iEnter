@@ -50,7 +50,7 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 ## 编译和测试
 
-1.2.1 修复了界面放大小图标和 Windows 高 DPI 模糊的问题。图标保留[可编辑 Figma 原稿](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2)及 [SVG 矢量文件](assets/ienter.svg)，界面直接绘制矢量路径，系统图标包含 16–256 px 的十档尺寸。
+1.3.1 使用米白色 L 形键帽与蓝色圆角回车箭头。[SVG 矢量文件](assets/ienter.svg)保留可编辑原稿；界面和图标导出共用 `src/IconArtwork.cs` 中的矢量路径，系统图标包含 16–256 px 的十档尺寸，并支持高 DPI 显示。
 
 需要 Windows x64 和 .NET Framework 4.x 编译器。当前机器已经具备；项目没有 NuGet 或网络运行依赖。
 
@@ -81,4 +81,4 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 Windows 接口参考：[KBDLLHOOKSTRUCT](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct)、[SendInput](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput)、[剪贴板接口](https://learn.microsoft.com/en-us/windows/win32/dataxchg/clipboard)。
 
-图标的回车箭头改编自 [Lucide corner-down-left](https://github.com/lucide-icons/lucide/blob/main/icons/corner-down-left.svg)，圆角背景和配色在本项目中制作。图标许可见 `assets/LUCIDE-LICENSE.txt`；程序源码采用 MIT 许可。
+图标的回车箭头从 [Lucide corner-down-left](https://github.com/lucide-icons/lucide/blob/main/icons/corner-down-left.svg) 演变而来，键帽、比例与配色在本项目中制作。图标许可见 `assets/LUCIDE-LICENSE.txt`；程序源码采用 MIT 许可。

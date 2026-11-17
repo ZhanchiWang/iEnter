@@ -1,6 +1,1 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- Exported from the editable Figma icon. Arrow adapted from Lucide corner-down-left (ISC / Feather MIT). -->
-<path d="M384 16H128C66.1441 16 16 66.1441 16 128V384C16 445.856 66.1441 496 128 496H384C445.856 496 496 445.856 496 384V128C496 66.1441 445.856 16 384 16Z" fill="#007AFF"/>
-<path d="M376 132V240C376 256.974 369.257 273.252 357.255 285.255C345.252 297.257 328.974 304 312 304H136" stroke="white" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M208 232L136 304L208 376" stroke="white" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="384" viewBox="0 0 384 384"><path d="M206 42H308C329 42 346 59 346 80V304C346 325 329 342 308 342H76C55 342 38 325 38 304V212C38 191 55 174 76 174H156C165 174 172 167 172 158V76C172 55 186 42 206 42Z" fill="#CFC6B7"/><path d="M206 42H308C329 42 346 59 346 80V282C346 304 331 320 309 320H75C53 320 38 304 38 282V212C38 191 55 174 76 174H156C165 174 172 167 172 158V76C172 55 186 42 206 42Z" fill="#F0EBE2"/><path d="M208 49H305C322 49 332 60 332 77V269C332 286 322 297 305 297H79C62 297 52 286 52 269V214C52 197 62 187 79 187H164C177 187 186 178 186 165V77C186 60 192 49 208 49Z" fill="#FAF8F3"/><g transform="translate(-45 49)" fill="none" stroke="#007AFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><path d="M292 102V178Q292 194 276 194H182"/><path d="M212 164L182 194L212 224"/></g></svg>

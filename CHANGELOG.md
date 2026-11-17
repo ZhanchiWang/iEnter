@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.1 — 2026-11-17
+
+- Replace the app icon with the approved ivory L-shaped keycap and rounded blue return arrow.
+- Keep the arrow horizontally centered and lowered by one stroke width from the centered revision.
+- Share vector geometry between the live UI and exported Windows icons to keep every size consistent.
+- Refresh both interface previews; input behavior and saved settings are unchanged.
+
 ## 1.3.0 — 2026-11-17
 
 - Rename the app to iEnter across the interface, tray, executable, downloads, and documentation.

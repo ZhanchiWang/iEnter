@@ -1,34 +1,20 @@
 $ErrorActionPreference = 'Stop'
+# Use the same .NET Framework drawing implementation as the desktop app.
+if ($PSVersionTable.PSEdition -eq 'Core') {
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PSCommandPath
+    if ($LASTEXITCODE -ne 0) { throw 'Icon rendering failed.' }
+    return
+}
 Add-Type -AssemblyName System.Drawing
 $assets = Join-Path (Split-Path $PSScriptRoot -Parent) 'assets'
 New-Item -ItemType Directory -Path $assets -Force | Out-Null
+Add-Type -Path (Join-Path (Split-Path $PSScriptRoot -Parent) 'src\IconArtwork.cs') -ReferencedAssemblies System.Drawing
 function Render-Icon([int]$size) {
     $bmp = New-Object System.Drawing.Bitmap($size, $size)
     $g = [System.Drawing.Graphics]::FromImage($bmp)
-    $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
     $g.Clear([System.Drawing.Color]::Transparent)
-    $g.ScaleTransform(($size / 512.0), ($size / 512.0))
-    $round = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $round.AddArc(16,16,224,224,180,90)
-    $round.AddArc(272,16,224,224,270,90)
-    $round.AddArc(272,272,224,224,0,90)
-    $round.AddArc(16,272,224,224,90,90)
-    $round.CloseFigure()
-    $bg = New-Object System.Drawing.SolidBrush([System.Drawing.ColorTranslator]::FromHtml('#007AFF'))
-    $g.FillPath($bg,$round)
-    $arrow = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $arrow.AddLine(376,132,376,240)
-    $arrow.AddBezier(376,240,376,275.346,347.346,304,312,304)
-    $arrow.AddLine(312,304,136,304)
-    $arrow.StartFigure()
-    $arrow.AddLine(208,232,136,304)
-    $arrow.AddLine(136,304,208,376)
-    $pen = New-Object System.Drawing.Pen([System.Drawing.Color]::White,56)
-    $pen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
-    $pen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
-    $pen.LineJoin = [System.Drawing.Drawing2D.LineJoin]::Round
-    $g.DrawPath($pen,$arrow)
-    $pen.Dispose(); $arrow.Dispose(); $bg.Dispose(); $round.Dispose(); $g.Dispose()
+    [TypelessAutoEnter.IconArtwork]::Draw($g, (New-Object System.Drawing.RectangleF(0,0,$size,$size)))
+    $g.Dispose()
     return $bmp
 }
 $preview = Render-Icon 1024
