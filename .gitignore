@@ -1,0 +1,8 @@
+dist/
+dist-staging/
+test-results/
+*.user
+release/
+*.zip
+*.tmp
+settings.json
