@@ -50,7 +50,7 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 ## 编译和测试
 
-1.3.1 使用米白色 L 形键帽与蓝色圆角回车箭头。[SVG 矢量文件](assets/ienter.svg)保留可编辑原稿；界面和图标导出共用 `src/IconArtwork.cs` 中的矢量路径，系统图标包含 16–256 px 的十档尺寸，并支持高 DPI 显示。
+1.3.2 使用墨色 L 形键帽、灰色倒角与白色圆角回车箭头，增强小图标的辨识度。[SVG 矢量文件](assets/ienter.svg)保留可编辑原稿；界面和图标导出共用 `src/IconArtwork.cs` 中的矢量路径，系统图标包含 16–256 px 的十档尺寸，并支持高 DPI 显示。
 
 需要 Windows x64 和 .NET Framework 4.x 编译器。当前机器已经具备；项目没有 NuGet 或网络运行依赖。
 

@@ -12,13 +12,13 @@ public static class IconArtwork {
             float scale=Math.Min(bounds.Width,bounds.Height)/384f;
             g.TranslateTransform(bounds.X+(bounds.Width-384*scale)/2,bounds.Y+(bounds.Height-384*scale)/2);
             g.ScaleTransform(scale,scale);g.SmoothingMode=SmoothingMode.AntiAlias;
-            using(var p=Outer(true)) using(var b=new SolidBrush(Color.FromArgb(207,198,183))) g.FillPath(b,p);
-            using(var p=Outer(false)) using(var b=new SolidBrush(Color.FromArgb(240,235,226))) g.FillPath(b,p);
-            using(var p=Face()) using(var b=new SolidBrush(Color.FromArgb(250,248,243))) g.FillPath(b,p);
+            using(var p=Outer(true)) using(var b=new SolidBrush(Color.FromArgb(29,32,38))) g.FillPath(b,p);
+            using(var p=Outer(false)) using(var b=new SolidBrush(Color.FromArgb(89,94,104))) g.FillPath(b,p);
+            using(var p=Face()) using(var b=new SolidBrush(Color.FromArgb(56,59,66))) g.FillPath(b,p);
             // Approved position: centered horizontally, then lowered by one stroke.
             g.TranslateTransform(-45,49);
             using(var p=new GraphicsPath())
-            using(var pen=new Pen(Color.FromArgb(0,122,255),20) {StartCap=LineCap.Round,EndCap=LineCap.Round,LineJoin=LineJoin.Round}) {
+            using(var pen=new Pen(Color.White,20) {StartCap=LineCap.Round,EndCap=LineCap.Round,LineJoin=LineJoin.Round}) {
                 p.AddLine(292,102,292,178);
                 // Quadratic Q292 194 276 194 expressed as a cubic Bezier.
                 p.AddBezier(292,178,292,188.666667f,286.666667f,194,276,194);

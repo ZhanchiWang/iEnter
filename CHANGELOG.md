@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2 — 2026-11-17
+
+- Use an ink-dark keycap, gray bevel, and white return arrow for stronger small-icon contrast.
+- Preserve the approved L-shaped geometry, arrow weight, and lowered position.
+- Update app, tray, executable, and exported icons together.
+
 ## 1.3.1 — 2026-11-17
 
 - Replace the app icon with the approved ivory L-shaped keycap and rounded blue return arrow.

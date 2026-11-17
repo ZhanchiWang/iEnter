@@ -22,7 +22,7 @@ iEnter is an independent community project. It is not affiliated with Typeless a
 
 Previously named Auto Enter. When upgrading, point existing shortcuts and startup entries to `iEnter.exe`.
 
-1. Download `iEnter-v1.3.1-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/iEnter/releases) and extract it into a permanent folder. Keep `iEnter.exe.config` beside `iEnter.exe`; it enables sharp per-monitor DPI rendering.
+1. Download `iEnter-v1.3.2-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/iEnter/releases) and extract it into a permanent folder. Keep `iEnter.exe.config` beside `iEnter.exe`; it enables sharp per-monitor DPI rendering.
 2. Start Typeless, then open `iEnter.exe`.
 3. Turn on the switch and choose **Every dictation** or **With an ending word**.
 4. Try a dictation in the built-in test box. The **Enter received** counter should increase.
@@ -99,7 +99,7 @@ Quit an already-running iEnter instance before integration testing, and leave th
 
 ## Credits
 
-The [editable SVG icon](assets/ienter.svg) is an ivory L-shaped keycap with a rounded blue return arrow. `src/IconArtwork.cs` supplies the same vector geometry to the app header and icon exporter. The Windows icon includes ten native sizes from 16 to 256 px, and the PNG preview is 1024 px.
+The [editable SVG icon](assets/ienter.svg) is an ink-dark L-shaped keycap with a gray bevel and rounded white return arrow. `src/IconArtwork.cs` supplies the same vector geometry to the app header and icon exporter. The Windows icon includes ten native sizes from 16 to 256 px, and the PNG preview is 1024 px.
 
 Inspired by [ConstantineLiu/typeless-autoenter](https://github.com/ConstantineLiu/typeless-autoenter) for macOS. This Windows implementation is independently written; its input-source detection differs because Windows low-level keyboard events do not directly expose the source PID.
 
