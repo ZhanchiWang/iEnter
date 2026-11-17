@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2 — 2026-11-17
+
+- Fix compiler resource-argument quoting in PowerShell 7, while retaining Windows PowerShell 5.1 compatibility.
+- Includes the vector icon and high-DPI fixes from 1.2.1.
+
 ## 1.2.1 — 2026-11-17
 
 - Fix blurry header artwork by drawing vector paths at the actual control size instead of stretching a 32 px shell icon.

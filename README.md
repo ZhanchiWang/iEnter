@@ -20,7 +20,7 @@ Auto Enter is an independent community project. It is not affiliated with Typele
 
 ## Get started
 
-1. Download `Auto-Enter-v1.2.1-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/auto-enter/releases) and extract it into a permanent folder. Keep `AutoEnter.exe.config` beside `AutoEnter.exe`; it enables sharp per-monitor DPI rendering.
+1. Download `Auto-Enter-v1.2.2-Windows-x64.zip` from [Releases](https://github.com/ZhanchiWang/auto-enter/releases) and extract it into a permanent folder. Keep `AutoEnter.exe.config` beside `AutoEnter.exe`; it enables sharp per-monitor DPI rendering.
 2. Start Typeless, then open `AutoEnter.exe`.
 3. Turn on the switch and choose **Every dictation** or **With an ending word**.
 4. Try a dictation in the built-in test box. The **Enter received** counter should increase.
