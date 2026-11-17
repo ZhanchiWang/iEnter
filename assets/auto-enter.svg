@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#007AFF"/>
+  <!-- Enter arrow adapted from Lucide corner-down-left (ISC / Feather MIT). -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"><path d="M376 132v108a64 64 0 0 1-64 64H136"/><path d="m208 232-72 72 72 72"/></g>
+</svg>

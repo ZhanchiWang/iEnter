@@ -1,0 +1,31 @@
+name: Windows build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Build
+        shell: pwsh
+        run: ./build.ps1
+      - name: Run rule and settings tests
+        shell: pwsh
+        run: ./test.ps1
+      - name: Package
+        shell: pwsh
+        run: ./package.ps1
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: Auto-Enter-Windows-x64
+          path: release/*
+          if-no-files-found: error
