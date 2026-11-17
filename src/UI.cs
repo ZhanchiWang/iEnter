@@ -19,7 +19,7 @@ internal sealed class MainForm : Form {
     private bool exiting,refreshing;
     private int enters;
     internal MainForm(Settings s,bool previewMode=false) {
-        settings=s;preview=previewMode;UiText.Language=s.Language;Text="Auto Enter";
+        settings=s;preview=previewMode;UiText.Language=s.Language;Text="iEnter";
         SuspendLayout();Icon=AppIcon.LoadIcon(SystemInformation.IconSize);
         AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;
         Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
@@ -31,7 +31,7 @@ internal sealed class MainForm : Form {
         header.RowStyles.Add(new RowStyle(SizeType.Percent,100));
         header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,52));header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));header.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,74));
         header.Controls.Add(new AppIcon {Size=new Size(40,40),Margin=new Padding(0,5,12,0)},0,0);
-        var titles=new Panel {Dock=DockStyle.Fill};titles.Controls.Add(new Label {Text="Auto Enter",Font=new Font("Segoe UI",21,FontStyle.Bold),AutoSize=true,Location=new Point(0,-2)});
+        var titles=new Panel {Dock=DockStyle.Fill};titles.Controls.Add(new Label {Text="iEnter",Font=new Font("Segoe UI",21,FontStyle.Bold),AutoSize=true,Location=new Point(0,-2)});
         tagline.AutoSize=true;tagline.ForeColor=Theme.Muted;tagline.Location=new Point(2,34);tagline.Font=new Font(Font.FontFamily,9);titles.Controls.Add(tagline);header.Controls.Add(titles,1,0);
         language.Size=new Size(70,32);language.Margin=new Padding(0,9,0,0);header.Controls.Add(language,2,0);root.Controls.Add(header,0,0);
         var enableCard=new Card {Dock=DockStyle.Fill,Margin=new Padding(0,0,0,12),Padding=new Padding(18,12,18,12)};
@@ -80,12 +80,12 @@ internal sealed class MainForm : Form {
     private void UpdateCount(){count.Text=UiText.T("Enter received: ","收到回车：")+enters;}
     private void RefreshText() {
         tagline.Text=UiText.T("Speak. Send. Stay in flow.","说完，即发送。");language.Text=settings.Language=="en"?"中文":"EN";language.AccessibleName=UiText.T("Switch to Chinese","切换到英文");
-        enabled.AccessibleName=UiText.T("Enable Auto Enter","开启自动回车");activeTitle.Text=settings.Enabled?UiText.T("Auto Enter is on","自动回车已开启"):UiText.T("Auto Enter is paused","自动回车已暂停");activeHint.Text=UiText.T("A finishing touch for Typeless.","为 Typeless 补上最后一次回车。");
+        enabled.AccessibleName=UiText.T("Enable iEnter","开启自动回车");activeTitle.Text=settings.Enabled?UiText.T("iEnter is on","自动回车已开启"):UiText.T("iEnter is paused","自动回车已暂停");activeHint.Text=UiText.T("A finishing touch for Typeless.","为 Typeless 补上最后一次回车。");
         behaviorTitle.Text=UiText.T("When to send","发送方式");always.Text=UiText.T("Every dictation","每次输入后");ending.Text=UiText.T("With an ending word","仅有结束词时");wordLabel.Text=UiText.T("Ending word","结束词");endWord.AccessibleName=UiText.T("Custom ending word","自定义结束词");endWord.Enabled=settings.Mode=="over";
         wordHint.Text=settings.Mode=="over"?UiText.T("Removed before sending. Changes save automatically.","发送前去掉结束词，修改后自动保存。"):UiText.T("Presses Enter after every Typeless paste.","每次 Typeless 输入完成后，自动按回车。");
         demoTitle.Text=UiText.T("Try it here","在这里试一下");demoHint.Text=UiText.T("Dictate into this box. Nothing is sent anywhere.","在下方输入框中听写，内容不会发送出去。");Demo.AccessibleName=UiText.T("Local test box","本地测试框");UpdateCount();
         options.Text=UiText.T("Options…","更多设置");shortcut.Text=UiText.T("Toggle  Ctrl + Shift + Enter","快捷开关  Ctrl + Shift + Enter");status.Text=UiText.T("Runs in the tray when you close this window.","关闭窗口后继续在系统托盘运行。");
-        if(tray!=null){toggleMenu.Text=settings.Enabled?UiText.T("Pause Auto Enter","暂停自动回车"):UiText.T("Enable Auto Enter","开启自动回车");toggleMenu.Checked=settings.Enabled;settingsMenu.Text=UiText.T("Open Auto Enter","打开 Auto Enter");exitMenu.Text=UiText.T("Quit","退出");tray.Text="Auto Enter · "+(settings.Enabled?UiText.T("On","已开启"):UiText.T("Paused","已暂停"));}
+        if(tray!=null){toggleMenu.Text=settings.Enabled?UiText.T("Pause iEnter","暂停自动回车"):UiText.T("Enable iEnter","开启自动回车");toggleMenu.Checked=settings.Enabled;settingsMenu.Text=UiText.T("Open iEnter","打开 iEnter");exitMenu.Text=UiText.T("Quit","退出");tray.Text="iEnter · "+(settings.Enabled?UiText.T("On","已开启"):UiText.T("Paused","已暂停"));}
         if(engine!=null&&!engine.HotkeyRegistered)status.Text=UiText.T("Shortcut unavailable. Use the switch or tray menu.","快捷键被占用，可以使用开关或托盘菜单。");
     }
     private void Restore(){Show();WindowState=FormWindowState.Normal;Activate();}
@@ -99,7 +99,7 @@ internal sealed class MainForm : Form {
                 // a window or taking focus away from the user's active application.
                 form.ShowInTaskbar=false;form.Opacity=0;form.StartPosition=FormStartPosition.Manual;
                 form.Location=new Point(-10000,-10000);form.Show();form.PerformLayout();Application.DoEvents();
-                using(var bitmap=new Bitmap(form.ClientSize.Width,form.ClientSize.Height)) {form.Controls[0].DrawToBitmap(bitmap,new Rectangle(0,0,bitmap.Width,bitmap.Height));bitmap.Save(Path.Combine(directory,"auto-enter-"+lang+".png"),System.Drawing.Imaging.ImageFormat.Png);}
+                using(var bitmap=new Bitmap(form.ClientSize.Width,form.ClientSize.Height)) {form.Controls[0].DrawToBitmap(bitmap,new Rectangle(0,0,bitmap.Width,bitmap.Height));bitmap.Save(Path.Combine(directory,"ienter-"+lang+".png"),System.Drawing.Imaging.ImageFormat.Png);}
                 form.Close();
             }
         }
@@ -108,7 +108,7 @@ internal sealed class MainForm : Form {
 }
 internal sealed class OptionsForm : Form {
     internal OptionsForm(Settings settings,Func<bool> save) {
-        SuspendLayout();Text=UiText.T("Auto Enter · Options","Auto Enter · 更多设置");AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
+        SuspendLayout();Text=UiText.T("iEnter · Options","iEnter · 更多设置");AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;Font=new Font("Segoe UI",10);ForeColor=Theme.Ink;BackColor=Theme.Background;
         ClientSize=new Size(490,260);FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=false;MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;ShowInTaskbar=false;
         var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(24),ColumnCount=1,RowCount=6};root.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));Controls.Add(root);
         var all=new CheckBox {AutoSize=true,Text=UiText.T("Enable in every app","在所有应用中生效"),Checked=settings.AllApps};root.Controls.Add(all);

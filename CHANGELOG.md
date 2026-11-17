@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 — 2026-11-17
+
+- Rename the app to iEnter across the interface, tray, executable, downloads, and documentation.
+- Keep the existing settings folder and single-instance guard for compatibility with Auto Enter installations.
+- Preserve the vector icon, high-DPI rendering, and existing input behavior.
+
 ## 1.2.2 — 2026-11-17
 
 - Fix compiler resource-argument quoting in PowerShell 7, while retaining Windows PowerShell 5.1 compatibility.

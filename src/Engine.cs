@@ -43,7 +43,7 @@ internal sealed class Engine : NativeWindow, IDisposable {
     }
     internal void SetEnabled(bool enabled) {
         Settings.Enabled=enabled; Cancel(UiText.T("Switch changed; pending Enter canceled.","开关已改变，取消本次回车"));
-        messages.Enqueue(enabled ? UiText.T("Auto Enter is on.","已开启") : UiText.T("Auto Enter is paused.","已暂停"));
+        messages.Enqueue(enabled ? UiText.T("iEnter is on.","已开启") : UiText.T("iEnter is paused.","已暂停"));
     }
     private IntPtr KeyboardHook(int code,IntPtr wp,IntPtr lp) {
         try {
@@ -77,7 +77,7 @@ internal sealed class Engine : NativeWindow, IDisposable {
         var focus=Native.FocusOf(hwnd);
         if(hwnd==IntPtr.Zero || focus==IntPtr.Zero) { Cancel(UiText.T("Could not verify the input focus.","没有可确认的输入焦点")); return; }
         bool localTest=hwnd==TestWindow && focus==TestFocus;
-        if(!localTest && (hwnd==TestWindow || !Rules.Allows(Settings,name))) { Cancel(UiText.T("Auto Enter is not enabled for this app.","此应用未启用自动回车")); messages.Enqueue(UiText.T("Skipped: ","已忽略：")+name); return; }
+        if(!localTest && (hwnd==TestWindow || !Rules.Allows(Settings,name))) { Cancel(UiText.T("iEnter is not enabled for this app.","此应用未启用自动回车")); messages.Enqueue(UiText.T("Skipped: ","已忽略：")+name); return; }
         if(Settings.Mode=="over" && !Rules.IsValidEndWord(Settings.EndWord)) { Cancel(UiText.T("No ending word set; text kept.","结束词未设置，保留输入")); messages.Enqueue(UiText.T("Set an ending word to enable sending.","请设置结束词：当前只输入文字")); return; }
         string text; bool matched;
         if(!Native.ReadPasteText(Handle,Settings.Mode=="over" ? Settings.EndWord : null,out text,out matched)) { Cancel(UiText.T("Could not read this paste; Enter canceled.","无法读取本次粘贴，取消回车")); messages.Enqueue(UiText.T("Clipboard unavailable; paste skipped.","剪贴板暂不可读，已跳过")); return; }

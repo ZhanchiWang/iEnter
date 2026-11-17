@@ -26,6 +26,6 @@ jobs:
         run: ./package.ps1
       - uses: actions/upload-artifact@v7.0.2
         with:
-          name: Auto-Enter-Windows-x64
+          name: iEnter-Windows-x64
           path: release/*
           if-no-files-found: error

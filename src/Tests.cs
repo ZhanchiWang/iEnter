@@ -84,7 +84,7 @@ internal static class Integration {
         Directory.CreateDirectory(directory); var lines=new List<string>(); int fails=0;
         var originalClipboard=new DataObject();
         try { var source=Clipboard.GetDataObject(); if(source!=null) foreach(var format in source.GetFormats(false)) { try { originalClipboard.SetData(format,false,source.GetData(format,false)); } catch {} } } catch {}
-        var form=new Form {Text="Typeless AutoEnter — isolated integration test",Width=600,Height=300,StartPosition=FormStartPosition.CenterScreen};
+        var form=new Form {Text="iEnter — isolated integration test",Width=600,Height=300,StartPosition=FormStartPosition.CenterScreen};
         var edit=new TextBox {Multiline=true,Dock=DockStyle.Fill,AcceptsReturn=true};
         var other=new TextBox {Dock=DockStyle.Bottom}; form.Controls.Add(edit);form.Controls.Add(other);
         int enters=0; edit.KeyDown+=(o,e)=>{if(e.KeyCode==Keys.Enter){enters++;e.SuppressKeyPress=true;}};

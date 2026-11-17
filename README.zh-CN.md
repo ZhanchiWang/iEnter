@@ -1,16 +1,16 @@
-# Auto Enter
+# iEnter
 
-[English](README.md) · [下载 Windows 版](https://github.com/ZhanchiWang/auto-enter/releases)
+[English](README.md) · [下载 Windows 版](https://github.com/ZhanchiWang/iEnter/releases)
 
 1.2 版采用新的简洁界面，右上角可一键切换 English / 中文。语言、结束词和开关设置都会自动保存。仅发送 Enter，不增加 Tab 动作。应用范围和等待时间放在「更多设置」中。
 
 Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次 Enter。
 
-![Auto Enter](docs/images/auto-enter-zh.png)
+![iEnter](docs/images/ienter-zh.png)
 
 ## 使用
 
-1. 从 Releases 下载 ZIP 并解压，双击 `AutoEnter.exe`，不需要安装。请将 `AutoEnter.exe.config` 与程序保存在同一目录，它用于启用高 DPI 清晰显示。源码编译结果位于 `dist/`。
+1. 从 Releases 下载 ZIP 并解压，双击 `iEnter.exe`，不需要安装。请将 `iEnter.exe.config` 与程序保存在同一目录，它用于启用高 DPI 清晰显示。源码编译结果位于 `dist/`。
 2. 勾选「开启自动回车」。也可以用 **Ctrl + Shift + Enter** 或托盘菜单切换。
 3. 选择「每次输入后」或「仅有结束词时」；默认等待 **500 ms**。
    结束词模式下，在「结束词」输入框里填入 `over`、`发送`、`done` 或其他词语，修改后自动保存并立即生效。
@@ -19,7 +19,7 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 第一次运行默认暂停，默认程序列表为 Codex，默认结束词为 `over`。之后会记住你的开关、模式、结束词、等待时间和程序列表。关闭窗口会留在托盘；右键托盘图标选择「退出」才能完全退出。
 
-设置保存在 `%LOCALAPPDATA%\AutoEnter\settings.json`。不安装服务，不自动设置开机启动，不修改 Typeless 安装文件，不上传数据，不记录输入内容。
+设置继续保存在 `%LOCALAPPDATA%\AutoEnter\settings.json`，兼容改名前的 Auto Enter 配置。将已有桌面快捷方式和开机启动入口改为 `iEnter.exe` 即可。不安装服务，不自动设置开机启动，不修改 Typeless 安装文件，不上传数据，不记录输入内容。
 
 ## 两种模式
 
@@ -50,7 +50,7 @@ Windows 托盘小工具：Typeless 粘贴语音识别结果后，自动按一次
 
 ## 编译和测试
 
-1.2.1 修复了界面放大小图标和 Windows 高 DPI 模糊的问题。图标保留[可编辑 Figma 原稿](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2)及 [SVG 矢量文件](assets/auto-enter.svg)，界面直接绘制矢量路径，系统图标包含 16–256 px 的十档尺寸。
+1.2.1 修复了界面放大小图标和 Windows 高 DPI 模糊的问题。图标保留[可编辑 Figma 原稿](https://www.figma.com/design/Wge63qVXgYUMyRAoElWoYL?node-id=2-2)及 [SVG 矢量文件](assets/ienter.svg)，界面直接绘制矢量路径，系统图标包含 16–256 px 的十档尺寸。
 
 需要 Windows x64 和 .NET Framework 4.x 编译器。当前机器已经具备；项目没有 NuGet 或网络运行依赖。
 

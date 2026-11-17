@@ -32,7 +32,7 @@ function Render-Icon([int]$size) {
     return $bmp
 }
 $preview = Render-Icon 1024
-$preview.Save((Join-Path $assets 'auto-enter.png'),[System.Drawing.Imaging.ImageFormat]::Png)
+$preview.Save((Join-Path $assets 'ienter.png'),[System.Drawing.Imaging.ImageFormat]::Png)
 $preview.Dispose()
 $sizes = @(16,20,24,32,40,48,64,96,128,256)
 $frames = New-Object 'System.Collections.Generic.List[byte[]]'
@@ -43,7 +43,7 @@ foreach ($size in $sizes) {
     $frames.Add($stream.ToArray())
     $stream.Dispose(); $bmp.Dispose()
 }
-$file = [System.IO.File]::Create((Join-Path $assets 'auto-enter.ico'))
+$file = [System.IO.File]::Create((Join-Path $assets 'ienter.ico'))
 $writer = New-Object System.IO.BinaryWriter($file)
 $writer.Write([UInt16]0); $writer.Write([UInt16]1); $writer.Write([UInt16]$sizes.Count)
 $offset = 6 + 16 * $sizes.Count
@@ -55,4 +55,4 @@ for ($i=0; $i -lt $sizes.Count; $i++) {
 }
 foreach ($frame in $frames) { $writer.Write($frame) }
 $writer.Dispose(); $file.Dispose()
-Write-Output 'Created auto-enter.ico (10 native sizes, 16–256 px) and auto-enter.png (1024 px).'
+Write-Output 'Created ienter.ico (10 native sizes, 16–256 px) and ienter.png (1024 px).'

@@ -1,4 +1,4 @@
-param([string]$InputHelperDll, [string]$Executable = 'dist\AutoEnter.exe')
+param([string]$InputHelperDll, [string]$Executable = 'dist\iEnter.exe')
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 $exe = Join-Path $root $Executable

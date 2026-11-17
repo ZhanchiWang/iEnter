@@ -13,9 +13,9 @@ internal static class Program {
         var settings=Settings.Load();UiText.Language=settings.Language;
         bool created;
         using(var mutex=new Mutex(true,"Local\\TypelessAutoEnter.Windows.v1",out created)) {
-            if(!created) { MessageBox.Show(UiText.T("Auto Enter is already running. Open it from the system tray.","Auto Enter 已在运行，请在任务栏托盘中打开。"),"Auto Enter");return 0; }
+            if(!created) { MessageBox.Show(UiText.T("iEnter is already running. Open it from the system tray.","iEnter 已在运行，请在任务栏托盘中打开。"),"iEnter");return 0; }
             try { Application.Run(new MainForm(settings)); return 0; }
-            catch(Exception ex) { MessageBox.Show(UiText.T("Could not start: ","启动失败：")+ex.Message,"Auto Enter");return 1; }
+            catch(Exception ex) { MessageBox.Show(UiText.T("Could not start: ","启动失败：")+ex.Message,"iEnter");return 1; }
         }
     }
 }
